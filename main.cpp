@@ -48,7 +48,9 @@ void leerYcrearNodos(Grafo* grafo){
 //funcion bool
 //si encuentra un char que no sea un digito retorna false
 //retorna true si no se logra demostrar que que no es digito
+//retorna false si es un espacio en blanco
 bool soloDigitos(string numero){
+    if(numero == "") return false;
     for(int i = 0;i < numero.size();i++){
         if(!isdigit(numero[i])) return false;
     }
