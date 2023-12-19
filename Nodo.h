@@ -15,6 +15,7 @@ class Nodo{
         Nodo* predecesor;
         int tiempoAcumulado;
         Nodo(string,string,string);
+        bool existeConexion(Conexion*);
 };
 
 //constructor de Nodo
@@ -28,3 +29,12 @@ Nodo::Nodo(string id,string nombre, string tipo){
     this->tiempoAcumulado = 0;
 }
 
+//si este nodo ya tiene una conexion que lo lleva a un nodo X, entonces retorna true
+bool Nodo::existeConexion(Conexion* nuevaConexion){
+    for(Conexion* conexionActual: conexiones){
+        if(conexionActual->destino->id == nuevaConexion->destino->id){
+            return true;
+        }
+    }
+    return false;
+}

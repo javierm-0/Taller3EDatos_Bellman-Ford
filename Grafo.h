@@ -60,7 +60,14 @@ void Grafo::insertarConexion(Nodo* origen, Nodo* destino,int velocidad, int dist
     if(origen && destino){
         if(existeNodoEnGrafo(origen->id) && existeNodoEnGrafo(destino->id)){
             Conexion* nuevaConexion = new Conexion(destino,velocidad,distancia);
-            origen->conexiones.push_back(nuevaConexion);
+            if(origen->existeConexion(nuevaConexion) == false){
+                //si origen aun no tenia esta conexion
+                //entonces se la agrego
+                origen->conexiones.push_back(nuevaConexion);
+            }
+            else{
+                cout<<"error(leve): conexion repetida"<<endl;
+            }
         }
         else{
             cout<<"error: se esta intentando conectar nodos que no pertenecen al grafo aun"<<endl;
@@ -103,6 +110,7 @@ void Grafo::establecerConexion(string idCliente,string idServidor, int speed,int
     Nodo* nodoDestino = this->getNodoEnGrafo(idServidor);
     if(nodoOrigen && nodoDestino){
         this->insertarConexion(nodoOrigen,nodoDestino,speed,distance);
+        this->insertarConexion(nodoDestino,nodoOrigen,speed,distance);
     }
 }
 
