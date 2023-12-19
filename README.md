@@ -12,6 +12,10 @@ Integrantes:
 //Inti Cerda Ramirez
 
 
+//Para darle bidireccionalidad al grafo, en el metodo establecerConexion llama a una func aux para que se establezca A->B y luego B->A, la forma en que se establece es agregando una
+//Conexion al vector de Conexion* del nodo, tambien se revisa que no se repita la Conexion en cada nodo, se compara el id de los destinos de cada conexion con respecto a la nueva conexion que 
+//intento agregar.
+
 //La clase Grafo tendra un vector de nodos de tipo Nodo, y en esta clase se iterara en busca del mejor camino
 //usando el algoritmo de Bellman-Ford
 //Este grafo fue implementado con la idea que cada nodo tiene multiples aristas(Conexion)
